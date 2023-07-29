@@ -3,8 +3,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 ### Requirements
--[NodeJS] - >= 18
--[Npm] - >= 8
+1. [NodeJS] >= 18
+2. [Npm] >= 8
 
 
 ### Running the project
