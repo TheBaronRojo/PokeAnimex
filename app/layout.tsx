@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import SearchBar from '@/components/SearchBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,10 +14,18 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}, params: any) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} bg-primary-black`}>
+        <header className='py-12'>
+          <h1 className="text-purple font-bold text-center text-5xl pb-4">PokeAnimex</h1>
+          <SearchBar preSearch={params?.title || ""} />
+        </header>
+        {
+          children
+        }
+      </body>
     </html>
   )
 }
