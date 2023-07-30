@@ -4,14 +4,14 @@ import Search from "@/public/icons/search.svg"
 import Spin from "@/public/icons/spin.svg"
 import Image from "next/image"
 import { preSearchType } from "@/utils/types";
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
+import { useRouter, useParams } from 'next/navigation'
 
-export default function SearchBar({ preSearch }: preSearchType) {
+export default function SearchBar() {
 
+    const params = useParams();
     const router = useRouter()
     const btnRef = useRef<HTMLButtonElement>(null)
-    const [titleSearch, setTitleSearch] = useState(preSearch || "")
+    const [titleSearch, setTitleSearch] = useState(params.name || "")
     const [isLoading, setIsLoading] = useState(false)
 
     function handleSubmit(e: FormEvent) {
