@@ -1,6 +1,9 @@
 import Image from "next/image"
 import Spin from "@/public/icons/spin.svg"
 
+/**
+ * When the page is loading this screen is rendered
+ */
 export default function Loading() {
     return (
         <div className="flex flex-col w-full h-full justify-center items-center text-primary-white text-5xl">

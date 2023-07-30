@@ -1,11 +1,15 @@
 'use client'
-import { FormEvent, useState, useRef } from "react";
+import { FormEvent, useState, useRef, useEffect } from "react";
 import Search from "@/public/icons/search.svg"
 import Spin from "@/public/icons/spin.svg"
 import Image from "next/image"
-import { preSearchType } from "@/utils/types";
 import { useRouter, useParams } from 'next/navigation'
 
+/**
+ * Searching bar. UseEffect for load the param when
+ * a search is make it, or the page is loaded in a specific
+ * page. 
+ */
 export default function SearchBar() {
 
     const params = useParams();
@@ -13,6 +17,17 @@ export default function SearchBar() {
     const btnRef = useRef<HTMLButtonElement>(null)
     const [titleSearch, setTitleSearch] = useState(params.name || "")
     const [isLoading, setIsLoading] = useState(false)
+
+    useEffect(() => {
+        if(params.name)
+        {
+            setTitleSearch(params.name)
+        }
+        else
+        {
+            setTitleSearch("")
+        }
+    },[params.name])
 
     function handleSubmit(e: FormEvent) {
         e.preventDefault();
@@ -24,7 +39,7 @@ export default function SearchBar() {
     }
 
     return (
-        <div className="w-[45%] mx-auto relative">
+        <div className="w-[75%] md:w-[45%] mx-auto relative">
             <form onSubmit={(e) => handleSubmit(e)}>
                 <input disabled={isLoading} autoFocus value={titleSearch} onChange={(e) => setTitleSearch(e.target.value)}
                     className="text-white bg-secondary-black w-full pr-10 border-2 border-secondary-black py-3 px-5 rounded-full"

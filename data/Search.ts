@@ -1,8 +1,14 @@
 import axios from 'axios'
+import { animeProps } from '@/utils/types'
 
 export async function searchTitle(title?: string): Promise<any> {
 	try {
-		if (title === '' || title === undefined || title === null || title.length <= 0) {
+		if (
+			title === '' ||
+			title === undefined ||
+			title === null ||
+			title.length <= 0
+		) {
 			return {
 				error: true,
 				errorMessage: 'Please enter a title',
@@ -10,7 +16,7 @@ export async function searchTitle(title?: string): Promise<any> {
 			}
 		} else {
 			let band: boolean = true
-			let data: Array<any> = []
+			let data: Array<animeProps> = []
 			let lastPage: number = 1
 
 			while (band) {
@@ -30,8 +36,6 @@ export async function searchTitle(title?: string): Promise<any> {
 				}
 			}
 
-			//await new Promise(resolve => setTimeout(resolve, 300));
-			
 			return {
 				error: false,
 				errorMessage: '',

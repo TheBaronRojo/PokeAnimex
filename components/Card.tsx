@@ -3,13 +3,14 @@ import { scoreAverage } from "@/data/Search"
 import Link from "next/link"
 import Star from "@/public/icons/star.svg"
 import Search from "@/public/icons/search.svg"
+import { animeProps } from "@/utils/types"
 
-export default function SearchBar({ data, visible }: any) {
+export default function SearchBar({ data, visible }: animeProps) {
 
     const Legend = scoreAverage(data.score)
 
     return (
-        <div className={`p-5 cursor-default w-4/5 min-h-full ${visible ? "opacity-1" : "fixed -left-full opacity-0"} transition-all duration-500`}>
+        <div className={`p-5 cursor-default w-3/5 md:w-4/5 min-h-full ${visible ? "opacity-1" : "fixed -left-full opacity-0"} transition-all duration-500`}>
             <div className="relative">
                 <div className="">
                     <div>
@@ -24,7 +25,7 @@ export default function SearchBar({ data, visible }: any) {
                         </a>
                     </div>
                     <div className="py-2 leading-5">
-                        <h4 className="text-primary-white">{data.title}</h4>
+                        <h4 className="line-clamp-3 lg:line-clamp-none text-primary-white">{data.title}</h4>
                         <div className="py-1">
                             <label className="text-gray-400 text-sm">{Legend}</label>
                         </div>
@@ -47,7 +48,7 @@ export default function SearchBar({ data, visible }: any) {
                                     Score {data.score || "--"}
                                 </h4>
                             </div>
-                            <h4 className="line-clamp-5 pt-3 text-sm text-center w-full text-gray-300 italic px-2">{data.synopsis}</h4>
+                            <h4 className="line-clamp-5 md:line-clamp-3 pt-3 text-sm text-center w-full text-gray-300 italic px-2">{data.synopsis}</h4>
                             <Link href={data.url} target="_blank">
                                 <button className={`flex mx-auto my-5 bg-secondary-black text-white text-sm font-bold py-2 px-4 rounded`}>
                                     <Image className="mr-2" src={Search} alt="More info" width={16} height={16} />

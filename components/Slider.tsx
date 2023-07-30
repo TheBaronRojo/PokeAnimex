@@ -3,8 +3,9 @@ import { useState } from "react";
 import Image from 'next/image'
 import chevron from "@/public/icons/chevron.svg"
 import Card from '@/components/Card'
+import { animeArrayProps, dataProps } from "@/utils/types";
 
-export default function Slider({ data }: any) {
+export default function Slider({ data }: animeArrayProps) {
 
     const [index, setIndex] = useState(0)
     const [imagesToShow, setImagesToShow] = useState([0, 1, 2, 3, 4])
@@ -27,9 +28,10 @@ export default function Slider({ data }: any) {
             }
         }
     }
+    
 
     return (
-        <div className="relative flex flex-col md:flex-row w-full max-w-6xl mx-auto my-10">
+        <div className="relative flex flex-col md:flex-row w-full max-w-6xl mx-auto my-10 min-h-4/5">
             <button className='px-4 mx-auto md:mx-0' onClick={() => changeIndex("L")} disabled={index === 0}>
                 <Image
                     className={`${index === 0 ? "hidden" : ""} rotate-90 md:rotate-0`}
