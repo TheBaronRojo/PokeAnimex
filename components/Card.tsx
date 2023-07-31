@@ -10,7 +10,8 @@ export default function SearchBar({ data, visible }: animeProps) {
     const Legend = scoreAverage(data.score)
 
     return (
-        <div className={`p-5 cursor-default w-3/5 md:w-4/5 min-h-full ${visible ? "opacity-1" : "fixed -left-full opacity-0"} transition-all duration-500`}>
+        <div className={`p-5 cursor-default w-3/5 md:w-1/5 min-h-full 
+        ${visible ? "opacity-1" : "fixed -left-full opacity-0"} transition-all duration-500`}>
             <div className="relative">
                 <div className="">
                     <div>
@@ -21,6 +22,7 @@ export default function SearchBar({ data, visible }: animeProps) {
                                 alt={data.title}
                                 width={150}
                                 height={300}
+                                loading="eager"
                             />
                         </a>
                     </div>
